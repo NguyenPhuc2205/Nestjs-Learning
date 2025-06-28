@@ -19,6 +19,7 @@ model User {
   
   email     String          @unique
   name      String
+  description String        @default("")
   password  String
 
   createdAt DateTime        @default(now())
@@ -42,7 +43,7 @@ model Post {
 }
 
 model RefreshToken {
-  token     String   @id
+  token     String   @unique
   userId    Int
 
   expiresAt DateTime
