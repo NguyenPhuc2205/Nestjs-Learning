@@ -1,0 +1,1 @@
+export const HASH_SALT_ROUNDS = Symbol.for('HASH_SALT_ROUNDS')
