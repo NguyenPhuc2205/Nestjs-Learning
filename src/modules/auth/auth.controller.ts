@@ -11,7 +11,7 @@ export class AuthController {
   @SerializeOptions({ type: RegisterResponseDTO })
   @Post('register')
   async register(@Body() body: RegisterBodyDTO) {
-    console.log('Registering user body:', body)
+    console.log('Controller - User body...:', body)
 
     const result = await this.authService.register(body)
 
@@ -20,6 +20,6 @@ export class AuthController {
       return null
     }
 
-    return result
+    return new RegisterResponseDTO(result)
   }
 }

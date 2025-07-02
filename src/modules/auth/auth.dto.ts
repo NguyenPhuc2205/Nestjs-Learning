@@ -1,5 +1,6 @@
-import { Exclude, Expose } from 'class-transformer'
+import { Exclude, Expose, Type } from 'class-transformer'
 import { IsEmail, IsString } from 'class-validator'
+import { SuccessResDTO } from 'src/common/dto/success.dto'
 
 export class LoginBodyDTO {
   @IsString()
@@ -36,5 +37,15 @@ export class RegisterResponseDTO {
 
   constructor (data: Partial<RegisterResponseDTO>) {
     Object.assign(this,data)
+  }
+}
+
+export class RegisterResDTO extends SuccessResDTO {
+  @Type(() => RegisterResponseDTO)
+  declare data: RegisterResponseDTO 
+
+  constructor (data: Partial<RegisterResDTO>) {
+    super(data)
+    Object.assign(this, data)
   }
 }
